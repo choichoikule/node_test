@@ -21,12 +21,9 @@ const fs = require('fs');
  */
 const readFilePromise = (...args) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(...args, (err, result) => {
-      if (result === undefined) {
-        reject('fail');
-      } else {
-        resolve(result);
-      }
+    fs.readFile(...args, (err, data) => {
+      if (err) reject('fail');
+      if (data) resolve(data);
     });
   });
 };
