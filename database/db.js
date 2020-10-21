@@ -1,4 +1,4 @@
-const mysql = require("mysql2/promise");
+const mysql = require('mysql2/promise');
 
 /**
  *
@@ -10,18 +10,18 @@ const mysql = require("mysql2/promise");
  *
  * 환경 변수 작성 후 createPool 함수의 주석을 삭제하면 됩니다.
  *
- */
+ */ 3306;
 
-const DB_HOST = "";
-const DB_USER = "";
-const DB_NAME = "";
-const DB_PASSWORD = "";
+const DB_HOST = 'localhost';
+const DB_USER = 'root';
+const DB_NAME = 'test';
+const DB_PASSWORD = 'tprPwjdqhr1!';
 
-// const db = mysql.createPool({
-//   host: DB_HOST,
-//   user: DB_USER,
-//   database: DB_NAME,
-//   password: DB_PASSWORD,
-// });
+const db = mysql.createPool({
+  host: DB_HOST,
+  user: DB_USER,
+  database: DB_NAME,
+  password: DB_PASSWORD,
+});
 
-// module.exports = db;
+module.exports = db;

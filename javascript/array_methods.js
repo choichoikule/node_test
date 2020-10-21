@@ -14,8 +14,15 @@
  */
 
 const usersHandler = (users, jobArea) => {
-  return;
+  return users
+    .filter((userInfo) => userInfo.jobArea == jobArea)
+    .map((filteredUserInfo) => ({
+      ...filteredUserInfo,
+      language: 'JavaScript',
+    }));
 };
+
+//
 
 /**
  * 문자열을 받아서, 단어가 카운트 된 객체를 리턴하는 함수를 구현해 주세요.
@@ -27,7 +34,14 @@ const usersHandler = (users, jobArea) => {
  * @returns {object} 단어가 카운팅 된 객체
  */
 const wordCount = (words) => {
-  return;
+  if (!words) return {}; //early return 이라고함
+  let counted = words.split(' ').reduce(function (countObj, word) {
+    const isDuplicated = countObj.hasOwnProperty(word);
+    isDuplicated ? countObj[word]++ : (countObj[word] = 1);
+    return countObj;
+  }, {});
+
+  return counted;
 };
 
 module.exports = { usersHandler, wordCount };

@@ -1,4 +1,4 @@
-const db = require("./db");
+const db = require('./db');
 
 /**
  * users 테이블의 유저를 불러 올 수 있도록 쿼리문을 작성해 주세요
@@ -11,7 +11,7 @@ const db = require("./db");
  * @param {integer} limit
  */
 const getUsersWithLimit = (limit = null) => {
-  return db.query(``);
+  return db.query(`SELECT * FROM users ${limit ? `LIMIT ${limit}` : ''}`);
 };
 
 /**
@@ -24,7 +24,9 @@ const getUsersWithLimit = (limit = null) => {
  *
  */
 const updateJobAreaOfUser = (name, job_area) => {
-  return db.query(``);
+  return db.query(
+    `UPDATE users SET job_area='${job_area}' WHERE name='${name}'`
+  );
 };
 
 /**
@@ -35,7 +37,7 @@ const updateJobAreaOfUser = (name, job_area) => {
  * @param {string} name
  */
 const deleteUser = (name) => {
-  return db.query(``);
+  return db.query(`DELETE FROM users WHERE name='${name}'`);
 };
 
 /**
@@ -48,7 +50,8 @@ const deleteUser = (name) => {
  * @param {string} keyword
  */
 const searchUsers = (keyword) => {
-  return db.query(``);
+  if (!keyword) return [];
+  return db.query(`SELECT * FROM users WHERE name LIKE '%${keyword}%'`);
 };
 
 module.exports = {
